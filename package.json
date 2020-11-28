@@ -1,0 +1,68 @@
+{
+  "name": "pnpm-monorepo",
+  "version": "1.0.0",
+  "description": "Pnpm monorepo",
+  "keywords": [
+    "PNPM",
+    "Monorepo",
+    "Serverless"
+  ],
+  "homepage": "https://github.com/thibault-jacquet/pnpm-monorepo#readme",
+  "bugs": {
+    "url": "https://github.com/thibault-jacquet/pnpm-monorepo/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thibault-jacquet/pnpm-monorepo.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc -b",
+    "preinstall": "npx only-allow pnpm",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "*.{md,json,ts,tsx}": [
+      "prettier --write"
+    ],
+    "*.{ts,tsx}": [
+      "eslint --fix"
+    ]
+  },
+  "dependencies": {
+    "aws-lambda": "^1.0.6",
+    "aws-sdk": "^2.799.0",
+    "class-transformer": "^0.3.1",
+    "uuid": "^8.3.1"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
+    "@types/aws-lambda": "^8.10.64",
+    "@types/uuid": "^8.3.0",
+    "@typescript-eslint/eslint-plugin": "^4.8.2",
+    "@typescript-eslint/parser": "^4.8.2",
+    "eslint": "^7.14.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.1.4",
+    "husky": "^4.3.0",
+    "lint-staged": "^10.5.2",
+    "prettier": "^2.2.1",
+    "typescript": "^4.1.2",
+    "webpack": "^5.8.0",
+    "webpack-cli": "^4.2.0"
+  },
+  "engines": {
+    "node": ">=12",
+    "pnpm": ">=5"
+  }
+}

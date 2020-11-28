@@ -1,0 +1,24 @@
+{
+  // Mandatory if not compile twice
+  "files": [],
+  "references": [
+    {
+      "path": "./micro-services/movies/lambdas/delete-movies"
+    },
+    {
+      "path": "./micro-services/movies/lambdas/put-movies"
+    },
+    {
+      "path": "./micro-services/movies/lambdas/get-movies"
+    },
+    {
+      "path": "./micro-services/movies/lambdas/post-movies"
+    },
+    {
+      "path": "./shared/interfaces"
+    },
+    {
+      "path": "./shared/tables"
+    }
+  ]
+}

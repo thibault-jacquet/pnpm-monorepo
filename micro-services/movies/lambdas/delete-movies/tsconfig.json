@@ -1,0 +1,9 @@
+{
+  "extends": "../../../tsconfig.micro-services.json",
+  "compilerOptions": {
+    "rootDir": "./src",
+    "outDir": "./lib"
+  },
+  "include": ["./src"],
+  "exclude": ["./lib"]
+}
