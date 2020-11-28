@@ -10,6 +10,7 @@ importers:
       '@commitlint/config-conventional': 11.0.0
       '@types/aws-lambda': 8.10.64
       '@types/uuid': 8.3.0
+      '@types/webpack-node-externals': 2.5.0
       '@typescript-eslint/eslint-plugin': 4.8.2_6341bfd4e6c74608cac2d9a1d059520a
       '@typescript-eslint/parser': 4.8.2_eslint@7.14.0+typescript@4.1.2
       eslint: 7.14.0
@@ -19,14 +20,17 @@ importers:
       husky: 4.3.0
       lint-staged: 10.5.2
       prettier: 2.2.1
+      tsconfig-paths-webpack-plugin: 3.3.0
       typescript: 4.1.2
       webpack: 5.8.0_webpack-cli@4.2.0
       webpack-cli: 4.2.0_webpack@5.8.0
+      webpack-node-externals: 2.5.2
     specifiers:
       '@commitlint/cli': ^11.0.0
       '@commitlint/config-conventional': ^11.0.0
       '@types/aws-lambda': ^8.10.64
       '@types/uuid': ^8.3.0
+      '@types/webpack-node-externals': ^2.5.0
       '@typescript-eslint/eslint-plugin': ^4.8.2
       '@typescript-eslint/parser': ^4.8.2
       aws-lambda: ^1.0.6
@@ -39,10 +43,12 @@ importers:
       husky: ^4.3.0
       lint-staged: ^10.5.2
       prettier: ^2.2.1
+      tsconfig-paths-webpack-plugin: ^3.3.0
       typescript: ^4.1.2
       uuid: ^8.3.1
       webpack: ^5.8.0
       webpack-cli: ^4.2.0
+      webpack-node-externals: ^2.5.2
   micro-services/movies/lambdas/delete-movies:
     specifiers: {}
   micro-services/movies/lambdas/get-movies:
@@ -275,6 +281,10 @@ packages:
       node: '>= 8'
     resolution:
       integrity: sha512-1V9XOY4rDW0rehzbrcqAmHnz8e7SKvX27gh8Gt2WgB0+pdzdiLV83p72kZPU+jvMbS1qU5mauP2iOvO8rhmurQ==
+  /@types/anymatch/1.3.1:
+    dev: true
+    resolution:
+      integrity: sha512-/+CRPXpBDpo2RK9C68N3b2cOvO0Cf5B9aPijHsoDQTHivnGSObdOF2BRQOYjojWTDy6nQvMjmqRXIxH55VjxxA==
   /@types/aws-lambda/8.10.64:
     dev: true
     resolution:
@@ -321,10 +331,49 @@ packages:
     dev: true
     resolution:
       integrity: sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==
+  /@types/source-list-map/0.1.2:
+    dev: true
+    resolution:
+      integrity: sha512-K5K+yml8LTo9bWJI/rECfIPrGgxdpeNbj+d53lwN4QjW1MCwlkhUms+gtdzigTeUyBr09+u8BwOIY3MXvHdcsA==
+  /@types/tapable/1.0.6:
+    dev: true
+    resolution:
+      integrity: sha512-W+bw9ds02rAQaMvaLYxAbJ6cvguW/iJXNT6lTssS1ps6QdrMKttqEAMEG/b5CR8TZl3/L7/lH0ZV5nNR1LXikA==
+  /@types/uglify-js/3.11.1:
+    dependencies:
+      source-map: 0.6.1
+    dev: true
+    resolution:
+      integrity: sha512-7npvPKV+jINLu1SpSYVWG8KvyJBhBa8tmzMMdDoVc2pWUYHN8KIXlPJhjJ4LT97c4dXJA2SHL/q6ADbDriZN+Q==
   /@types/uuid/8.3.0:
     dev: true
     resolution:
       integrity: sha512-eQ9qFW/fhfGJF8WKHGEHZEyVWfZxrT+6CLIJGBcZPfxUh/+BnEj+UCGYMlr9qZuX/2AltsvwrGqp0LhEW8D0zQ==
+  /@types/webpack-node-externals/2.5.0:
+    dependencies:
+      '@types/webpack': 4.41.25
+    dev: true
+    resolution:
+      integrity: sha512-KaWfhUQlpWknM/CMBKhV7i0vxX/N2xEy3WeaE500s4ZNxC4nLnKB+0F3gD3Fg+5octPq0nn8ZlfFR/P3dSkXpw==
+  /@types/webpack-sources/2.0.0:
+    dependencies:
+      '@types/node': 14.14.10
+      '@types/source-list-map': 0.1.2
+      source-map: 0.7.3
+    dev: true
+    resolution:
+      integrity: sha512-a5kPx98CNFRKQ+wqawroFunvFqv7GHm/3KOI52NY9xWADgc8smu4R6prt4EU/M4QfVjvgBkMqU4fBhw3QfMVkg==
+  /@types/webpack/4.41.25:
+    dependencies:
+      '@types/anymatch': 1.3.1
+      '@types/node': 14.14.10
+      '@types/tapable': 1.0.6
+      '@types/uglify-js': 3.11.1
+      '@types/webpack-sources': 2.0.0
+      source-map: 0.6.1
+    dev: true
+    resolution:
+      integrity: sha512-cr6kZ+4m9lp86ytQc1jPOJXgINQyz3kLLunZ57jznW+WIAL0JqZbGubQk4GlD42MuQL5JGOABrxdpqqWeovlVQ==
   /@typescript-eslint/eslint-plugin/4.8.2_6341bfd4e6c74608cac2d9a1d059520a:
     dependencies:
       '@typescript-eslint/experimental-utils': 4.8.2_eslint@7.14.0+typescript@4.1.2
@@ -1174,6 +1223,16 @@ packages:
     dev: true
     resolution:
       integrity: sha512-+uw1inIHVPQoaVuHzRyXd21icM+cnt4CzD5rW+NC1wjOUSTOs+Te7FOv7AhN7vS9x/oIyhLP5PR1H+phQAHu5Q==
+  /enhanced-resolve/4.3.0:
+    dependencies:
+      graceful-fs: 4.2.4
+      memory-fs: 0.5.0
+      tapable: 1.1.3
+    dev: true
+    engines:
+      node: '>=6.9.0'
+    resolution:
+      integrity: sha512-3e87LvavsdxyoCfGusJnrZ5G8SLPOFeHSNpZI/ATL9a5leXo2k0w6MKnbqhdBad9qTobSfB20Ld7UmgoNbAZkQ==
   /enhanced-resolve/5.3.2:
     dependencies:
       graceful-fs: 4.2.4
@@ -1198,6 +1257,13 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-46+j5QxbPWza0PB1i15nZx0xQ4I/EfQxg9J8Had3b408SV63nEtor2e+oiY63amTo9KTuh2a3XLObNwduxYwwA==
+  /errno/0.1.7:
+    dependencies:
+      prr: 1.0.1
+    dev: true
+    hasBin: true
+    resolution:
+      integrity: sha512-MfrRBDWzIWifgq6tJj60gkAwtLNb6sQPlcFrSOflcP1aFmmruKQ2wRnze/8V6kgyz7H3FF8Npzv78mZ7XLLflg==
   /error-ex/1.3.2:
     dependencies:
       is-arrayish: 0.2.1
@@ -2188,6 +2254,15 @@ packages:
       node: '>=8'
     resolution:
       integrity: sha512-glc9y00wgtwcDmp7GaE/0b0OnxpNJsVf3ael/An6Fe2Q51LLwN1er6sdomLRzz5h0+yMpiYLhWYF5R7HeqVd4g==
+  /memory-fs/0.5.0:
+    dependencies:
+      errno: 0.1.7
+      readable-stream: 2.3.7
+    dev: true
+    engines:
+      node: '>=4.3.0 <5.0.0 || >=5.10'
+    resolution:
+      integrity: sha512-jA0rdU5KoQMC0e6ppoNRtpp6vjFq6+NY7r8hywnC7V+1Xj/MtHwGIbB1QaK/dunyjWteJzmkpd7ooeWg10T7GA==
   /meow/8.0.0:
     dependencies:
       '@types/minimist': 1.2.1
@@ -2598,6 +2673,10 @@ packages:
       node: '>=0.4.0'
     resolution:
       integrity: sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA==
+  /prr/1.0.1:
+    dev: true
+    resolution:
+      integrity: sha1-0/wRS6BplaRexok/SEzrHXj19HY=
   /pump/3.0.0:
     dependencies:
       end-of-stream: 1.4.4
@@ -3119,6 +3198,12 @@ packages:
       node: '>=6.0.0'
     resolution:
       integrity: sha512-wmEc8m4fjnob4gt5riFRtTu/6+4rSe12TpAELNSqHMfF3IqnA+CH37USM6/YR3qRZv7e56kAEAtd6nKZaxe0Ug==
+  /tapable/1.1.3:
+    dev: true
+    engines:
+      node: '>=6'
+    resolution:
+      integrity: sha512-4WK/bYZmj8xLr+HUCODHGF1ZFzsYffasLUgEiMBY4fgtltdO6B4WJtlSbPaDTLpYTcGVwM2qLnFTICEcNxs3kA==
   /tapable/2.1.1:
     dev: true
     engines:
@@ -3199,6 +3284,14 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-n5up2e+odkw4dpi8v+sshI8RrbM=
+  /tsconfig-paths-webpack-plugin/3.3.0:
+    dependencies:
+      chalk: 2.4.2
+      enhanced-resolve: 4.3.0
+      tsconfig-paths: 3.9.0
+    dev: true
+    resolution:
+      integrity: sha512-MpQeZpwPY4gYASCUjY4yt2Zj8yv86O8f++3Ai4o0yI0fUC6G1syvnL9VuY71PBgimRYDQU47f12BEmJq9wRaSw==
   /tsconfig-paths/3.9.0:
     dependencies:
       '@types/json5': 0.0.29
@@ -3375,6 +3468,10 @@ packages:
     dev: true
     resolution:
       integrity: sha512-TUE1UGoTX2Cd42j3krGYqObZbOD+xF7u28WB7tfUordytSjbWTIjK/8V0amkBfTYN4/pB/GIDlJZZ657BGG19g==
+  /webpack-node-externals/2.5.2:
+    dev: true
+    resolution:
+      integrity: sha512-aHdl/y2N7PW2Sx7K+r3AxpJO+aDMcYzMQd60Qxefq3+EwhewSbTBqNumOsCE1JsCUNoyfGj5465N0sSf6hc/5w==
   /webpack-sources/2.2.0:
     dependencies:
       source-list-map: 2.0.1

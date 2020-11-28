@@ -15,5 +15,7 @@
     {
       "path": "../../../../shared/tables"
     }
-  ]
+  ],
+  "exclude": ["./webpack.config.js", "./lib"],
+  "include": ["./src"]
 }
