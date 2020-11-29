@@ -1,13 +1,11 @@
 import { BadRequestException } from '@mimir/exceptions'
-import { plainToClass } from 'class-transformer'
-import { validateOrReject } from 'class-validator'
+import { IMovie } from '@mimir/interfaces'
 
-import { MovieDto } from '../dtos/movie.dto'
+import { movieSchema } from '../schemas/movie.schema'
 
-export const validate = async (movieDto: MovieDto): Promise<void> => {
+export const validate = async (moviePayload: IMovie): Promise<void> => {
   try {
-    const movie = plainToClass(MovieDto, movieDto)
-    await validateOrReject(movie)
+    await movieSchema.validateAsync(moviePayload)
   } catch (errors) {
     throw new BadRequestException(errors)
   }

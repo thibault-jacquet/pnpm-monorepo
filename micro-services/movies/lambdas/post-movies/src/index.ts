@@ -11,8 +11,6 @@ import {
 } from 'aws-lambda'
 import { config } from 'aws-sdk'
 
-import 'reflect-metadata'
-
 // DYNAMODB CONFIG + INIT
 import dynamoConfig from './config/dynamo.config'
 import { postHandle } from './services/post.handle'

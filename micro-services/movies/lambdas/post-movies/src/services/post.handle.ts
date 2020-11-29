@@ -2,11 +2,9 @@ import { IDynamoDBConfig, IMovie, IPutItemInput } from '@mimir/interfaces'
 import { APIGatewayProxyResult } from 'aws-lambda'
 import { v4 as uuidv4 } from 'uuid'
 
-import { MovieDto } from '../dtos/movie.dto'
-
 export const postHandle = async (
   { dynamoDB, tableName }: IDynamoDBConfig,
-  moviePayload: MovieDto
+  moviePayload: IMovie
 ): Promise<APIGatewayProxyResult> => {
   const params: IPutItemInput<IMovie> = {
     TableName: tableName,
