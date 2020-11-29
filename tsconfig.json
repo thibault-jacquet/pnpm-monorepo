@@ -19,6 +19,15 @@
     },
     {
       "path": "./shared/tables"
+    },
+    {
+      "path": "./shared/utils"
+    },
+    {
+      "path": "./shared/enums"
+    },
+    {
+      "path": "./shared/exceptions"
     }
   ]
 }

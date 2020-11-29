@@ -11,7 +11,8 @@ module.exports = {
   // devtool: 'inline-source-map',
   output: {
     path: path.resolve(__dirname, './dist'),
-    filename: '[name].bundle.js'
+    filename: 'bundle.js',
+    libraryTarget: 'commonjs2'
   },
   mode: 'production',
   target: 'node',
@@ -36,5 +37,5 @@ module.exports = {
     plugins: [new TsconfigPathsPlugin()],
     extensions: ['.tsx', '.ts', '.js']
   },
-  externals: [nodeExternals(), { 'aws-sdk': 'aws-sdk' }]
+  externals: [{ 'aws-sdk': 'aws-sdk' }]
 }

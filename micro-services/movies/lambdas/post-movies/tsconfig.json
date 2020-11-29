@@ -14,6 +14,9 @@
     },
     {
       "path": "../../../../shared/tables"
+    },
+    {
+      "path": "../../../../shared/exceptions"
     }
   ],
   "exclude": ["./webpack.config.js", "./lib"],

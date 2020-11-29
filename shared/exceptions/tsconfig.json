@@ -1,0 +1,20 @@
+{
+  "extends": "../tsconfig.shared.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "./lib",
+    "rootDir": "./src",
+    "paths": {
+      "@mimir/*": ["../../shared/*"]
+    }
+  },
+  "references": [
+    {
+      "path": "../utils"
+    },
+    {
+      "path": "../enums"
+    }
+  ],
+  "include": ["./src"]
+}

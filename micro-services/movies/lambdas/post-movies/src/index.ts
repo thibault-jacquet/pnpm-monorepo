@@ -1,48 +1,54 @@
-import { IMovie, IPutItemInput, IPutItemOutput } from '@mimir/interfaces'
-import { TABLES } from '@mimir/tables'
+import {
+  BadRequestException,
+  HttpException,
+  InternalServerErrorException
+} from '@mimir/exceptions'
+import { IMovie } from '@mimir/interfaces'
 import {
   APIGatewayProxyEventV2,
   APIGatewayProxyResult,
   Context
 } from 'aws-lambda'
-import { AWSError, DynamoDB } from 'aws-sdk'
-import { PromiseResult } from 'aws-sdk/lib/request'
-import { v4 as uuidv4 } from 'uuid'
+import { config } from 'aws-sdk'
 
-const dynamoDb = new DynamoDB.DocumentClient()
+import 'reflect-metadata'
+
+// DYNAMODB CONFIG + INIT
+import dynamoConfig from './config/dynamo.config'
+import { postHandle } from './services/post.handle'
+import { validate } from './utils/validate'
+
+// CONFIG
+config.update({
+  region: process.env.AWS_DEFAULT_REGION ?? 'eu-central-1',
+  apiVersion: process.env.AWS_API_DEFAULT_VERSION ?? 'latest'
+})
 
 export const handler = async (
   event: APIGatewayProxyEventV2,
-  _context: Context
+  _context?: Context
 ): Promise<APIGatewayProxyResult> => {
-  const { body } = event
-  if (!body) {
-    throw new Error()
-  }
-  const moviePayload: IMovie = JSON.parse(body)
-
-  const params: IPutItemInput<IMovie> = {
-    TableName: TABLES.MOVIE,
-    Item: {
-      id: uuidv4(),
-      ...moviePayload
-    }
-  }
-
   try {
-    const createdMovie = (await dynamoDb
-      .put(params)
-      .promise()) as PromiseResult<IPutItemOutput<IMovie>, AWSError>
-
-    return {
-      statusCode: 201,
-      body: JSON.stringify(createdMovie.Attributes)
+    const { body } = event
+    if (!body) {
+      throw new BadRequestException('Empty body')
     }
+    const moviePayload: IMovie = JSON.parse(body)
+
+    // Validation
+    await validate(moviePayload)
+
+    // Call Service Post Handle
+    return postHandle(dynamoConfig, moviePayload)
   } catch (e) {
-    console.log(e)
+    let httpException: HttpException = e
+
+    if (!(httpException instanceof HttpException)) {
+      httpException = new InternalServerErrorException()
+    }
     return {
-      statusCode: 500,
-      body: 'Server Error'
+      statusCode: httpException.getStatus(),
+      body: JSON.stringify(httpException.getResponse())
     }
   }
 }

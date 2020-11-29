@@ -5,3 +5,7 @@ services:
    container_name: dynamodb-local
    ports:
     - "8000:8000"
+
+networks:
+  movies_network:
+    external: true
