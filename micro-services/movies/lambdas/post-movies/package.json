@@ -8,7 +8,7 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "webpack",
-    "build:watch": "concurrently \"webpack --config webpack.dev.js\" \"docker-compose up -d\" \"cd .. && sam local start-api --docker-network movies_network -p 9000\"",
+    "build:watch": "webpack --config webpack.dev.js",
     "test": "jest"
   }
 }

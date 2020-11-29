@@ -23,7 +23,7 @@
     "build": "tsc -b",
     "test": "pnpm test --recursive",
     "watch": "tsc -b -w",
-    "watch:movies": "concurrently \"pnpm watch\" \"pnpm build:watch --filter @movies/post-movies\"",
+    "watch:movies": "concurrently \"pnpm watch\" \"pnpm build:watch --filter '@movies/*'\" \"docker-compose up -d\" \"sam local start-api --docker-network movies_network -p 9000 -t micro-services/movies/lambdas/movies.ms.yaml\"",
     "preinstall": "npx only-allow pnpm"
   },
   "husky": {
